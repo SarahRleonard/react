@@ -7,14 +7,23 @@ function App() {
   const [role, setRole] = useState('dev');
   const [employees, setEmployees] = useState(
     [
-      { name: 'Caleb', role: 'Developer', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
-      { name: 'Mousse', role: 'Gate keeper', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
-      { name: 'Mila', role: 'Hugger', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
-      { name: 'Ashley', role: 'Manager', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
-      { name: 'Laure', role: 'Developer', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
-      { name: 'Julia', role: 'Boss', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' }
+      { id:1, name: 'Caleb', role: 'Developer', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
+      { id:2 ,name: 'Mousse', role: 'Gate keeper', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
+      { id:3, name: 'Mila', role: 'Hugger', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
+      { id:5, name: 'Ashley', role: 'Manager', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
+      { id:5, name: 'Laure', role: 'Developer', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' },
+      { id:6, name: 'Julia', role: 'Boss', img: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg' }
     ]
   );
+
+  function updateEmployee(id, newName, newRole){
+    const updatedEmployee = employees.map((employee) =>{
+      if(employee.id === id){
+        return{...employee, name: newName, role: newRole};
+      } return employee;
+    });
+    setEmployees(updatedEmployee);
+  }
   const showEmployees = true;
   return (
     <div className="App">
@@ -28,9 +37,16 @@ function App() {
             }} />
           <div className="flex flex-wrap justify-center">
             {employees.map((employee) => {
-              console.log(employee)
+              /* console.log(employee) */
               return (
-                <Employee key={uuidv4()} name={employee.name} role={employee.role} img={employee.img} />
+                <Employee 
+                /* key={uuidv4()} */
+                id={employee.id}  
+                name={employee.name} 
+                role={employee.role} 
+                img={employee.img} 
+                updateEmployee={updateEmployee}
+                />
               );
             })}
           </div>
