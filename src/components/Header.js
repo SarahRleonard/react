@@ -16,6 +16,7 @@ function classNames(...classes) {
 
 export default function Header(props) {
     return (
+        <>
         <Disclosure as="nav" className="bg-gray-700">
             {({ open }) => (
                 <>
@@ -91,9 +92,15 @@ export default function Header(props) {
                             ))}
                         </div>
                     </Disclosure.Panel>
-                    {props.children}
+                    
                 </>
             )}
         </Disclosure>
+        <div className="bg-gray-300">
+        <div className="max-w-7xl mx-auto min-h-screen px-2 py-2">
+            {props.children}
+        </div>
+        </div>
+        </>
     );
 }
